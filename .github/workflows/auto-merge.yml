@@ -15,6 +15,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      pull-requests: write
+      contents: write
+
     steps:
       - name: Enable Auto-Merge via GitHub CLI
         run: gh pr merge --auto --${{ inputs.merge-method }} "$PR_URL"
