@@ -28,6 +28,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     env:
       run_jacoco_badge: ${{ inputs.run-jacoco-badge && github.event_name == 'push' && github.ref == 'refs/heads/main' }}
 
@@ -35,6 +38,7 @@ jobs:
 
       - name: Debug Contexts
         run: |
+          echo "The actor evaluated as: ${{ github.actor }}"
           echo "The event name evaluated as: ${{ github.event_name }}"
           echo "The expression evaluated as: ${{ github.event_name == 'push' }}"
           echo "The ref evaluated as: ${{ github.ref}}"
